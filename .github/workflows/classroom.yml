@@ -18,6 +18,12 @@ jobs:
           dependencies-cache-enabled: true
           arguments: clean build
 
+      - name: Test Report
+        uses: mikepenz/action-junit-report@v2
+        if: always()
+        with:
+          report_paths: '**/build/test-results/test/TEST-*.xml'
+
       - uses: education/autograding@v1
 
       - name: Github auto grader mark
